@@ -1,0 +1,154 @@
+/* ==========================================
+   THEME VARIABLES
+========================================== */
+
+:root {
+  --clr-primary: #f59e0b;
+  --clr-dark: #020617;
+  --clr-bg: #f8fafc;
+
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  --radius-lg: 22px;
+}
+
+
+
+/* ==========================================
+   MIXINS
+========================================== */
+
+@mixin respond($bp) {
+  @if $bp == tablet {
+    @media (max-width: 991px) { @content; }
+  }
+  @if $bp == mobile {
+    @media (max-width: 600px) { @content; }
+  }
+}
+
+@mixin glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+}
+/* ==========================================
+   SERVICES BLOCK
+========================================== */
+
+.services {
+
+  &__container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+
+    display: grid;
+    gap: 35px;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* ---------- HERO ---------- */
+
+  &--hero {
+    height: 55vh;
+    background: url("/assets/img/slider1.jpg") center / cover no-repeat;
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      120deg,
+      rgba(2, 6, 23, 0.9),
+      rgba(2, 6, 23, 0.5)
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+  }
+
+  &__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: 1px;
+  }
+
+  &__subtitle {
+    opacity: 0.85;
+    margin-top: 10px;
+    max-width: 680px;
+  }
+}
+
+/* ==========================================
+   SERVICE CARDS (GLASS)
+========================================== */
+
+.services-card {
+
+  padding: 34px;
+  border-radius: var(--radius-lg);
+
+  @include glass;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  transition:
+    transform .6s cubic-bezier(.2,.8,.2,1),
+    box-shadow .6s,
+    background .6s;
+
+  &:hover {
+    transform: scale(1.06) translateY(-10px);
+    box-shadow: 0 40px 80px rgba(0,0,0,.3);
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    color: var(--clr-dark);
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding-left: 18px;
+
+    li {
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@include respond(tablet) {
+
+  .services__container {
+    padding: 60px 18px;
+  }
+
+}
+
+@include respond(mobile) {
+
+  .services--hero {
+    height: 38vh;
+  }
+
+}

@@ -1,0 +1,499 @@
+/* ==========================================
+   THEME VARIABLES
+========================================== */
+
+:root {
+  --clr-primary: #f59e0b;
+  --clr-dark: #020617;
+  --clr-bg: #f8fafc;
+  --clr-light: #ffffff;
+
+  --glass-bg: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.35);
+
+  --radius-xl: 26px;
+  --radius-lg: 18px;
+}
+
+
+/* ==========================================
+   MIXINS
+========================================== */
+
+@mixin respond($bp) {
+  @if $bp == tablet {
+    @media (max-width: 1024px) { @content; }
+  }
+  @if $bp == mobile {
+    @media (max-width: 768px) { @content; }
+  }
+  @if $bp == small {
+    @media (max-width: 480px) { @content; }
+  }
+}
+
+@mixin glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--glass-border);
+}
+
+// .whatwedo{
+//     background-color: #f7f5f3;
+//   }
+
+
+/* ==========================================
+   HOME BLOCK
+========================================== */
+
+.home {
+
+  /* ---------- SECTION ---------- */
+
+  &__section {
+    padding: 50px 20px;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 7px;
+    color: var(--clr-dark);
+  }
+
+
+  /* ======================================
+     HERO / SLIDER
+  ====================================== */
+
+  &__hero {
+    height: 95vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      115deg,
+      rgba(2, 6, 23, 0.85),
+      rgba(2, 6, 23, 0.45)
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    gap: 18px;
+    color: white;
+  }
+
+  &__hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+  }
+
+  &__hero-subtitle {
+    max-width: 620px;
+    opacity: .85;
+  }
+
+  &__btn {
+    background: var(--clr-primary);
+    padding: 14px 44px;
+    border-radius: 999px;
+    font-weight: 700;
+    color: #000;
+
+    transition: .45s cubic-bezier(.2,.8,.2,1);
+
+    &:hover {
+      transform: translateY(-6px) scale(1.08);
+      box-shadow: 0 22px 50px rgba(0,0,0,.3);
+    }
+  }
+
+
+  /* ======================================
+     ABOUT
+  ====================================== */
+
+  &__about {
+    background: var(--clr-bg);
+    text-align: center;
+    background-color: #f7f5f3;
+
+    p {
+      max-width: 780px;
+      margin: auto;
+      line-height: 1.75;
+      color: #475569;
+    }
+  }
+  /* ======================================
+     WHAT WE DO
+  ====================================== */
+
+
+
+  /* ======================================
+     SERVICES
+  ====================================== */
+
+  &__services-grid {
+    display: grid;
+    gap: 30px;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  &__service-card {
+    padding: 36px 26px;
+    border-radius: var(--radius-lg);
+
+    @include glass;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,.15);
+
+    text-align: center;
+
+    transition:
+      transform .6s cubic-bezier(.2,.8,.2,1),
+      box-shadow .6s;
+
+    &:hover {
+      transform: scale(1.07) translateY(-12px);
+      box-shadow: 0 45px 90px rgba(0,0,0,.35);
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      color: var(--clr-dark);
+    }
+
+    p {
+      color: #64748b;
+    }
+  }
+
+
+  /* ======================================
+     STATS
+  ====================================== */
+
+  &__stats {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: white;
+  }
+
+  &__stats-wrap {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__stat-box {
+
+    transition: .5s;
+
+    &:hover {
+      transform: scale(1.12);
+    }
+
+    h3 {
+      font-size: 3rem;
+      color: var(--clr-primary);
+    }
+
+    p {
+      opacity: .8;
+    }
+  }
+
+
+  /* ======================================
+     CONTACT
+  ====================================== */
+
+  &__contact {
+    background: linear-gradient(135deg, #fdfbf8, #a39d83);
+  }
+
+  &__contact-form {
+    max-width: 560px;
+    margin: auto;
+
+    @include glass;
+
+    padding: 36px;
+    border-radius: var(--radius-xl);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+
+    input,textarea  {
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+
+      &:focus {
+        outline: none;
+        border-color: var(--clr-primary);
+        box-shadow: 0 0 0 3px rgba(245,158,11,.25);
+      }
+
+    }
+
+    button {
+      background: var(--clr-dark);
+      color: white;
+      padding: 14px;
+      border-radius: 999px;
+
+      transition: .45s;
+
+      // &:hover {
+      //   transform: translateY(-5px) scale(1.08);
+      //   box-shadow: 0 20px 50px rgba(0,0,0,.35);
+      // }
+       &:hover {
+      background: rgb(14, 13, 13);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 18px 40px rgba(0,0,0,.3);
+      color: white;
+    }
+    }
+  }
+ /* ======================================
+   WELCOME ANIMATION
+====================================== */
+
+&__welcome-card {
+  //@include glass;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  //box-shadow: 0 25px 60px rgba(0,0,0,.15);
+  line-height: 1.8;
+  color: #475569;
+
+  animation: welcomeFadeUp 1.2s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+
+}
+
+&__welcome-sign {
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--clr-dark);
+}
+
+/* Keyframe Animation */
+
+@keyframes welcomeFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ======================================
+   VISION
+====================================== */
+
+&__vision {
+  background: var(--clr-bg);
+}
+
+&__vision-card {
+  @include glass;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  line-height: 1.8;
+  box-shadow: 0 25px 60px rgba(0,0,0,.12);
+  transition: .6s;
+
+  &:hover {
+    transform: scale(1.05) translateY(-8px);
+  }
+}
+
+/* ======================================
+   MISSION
+====================================== */
+
+&__mission {
+  background: linear-gradient(135deg, #eff0f3, #f0abab);
+  color: white;
+}
+
+&__mission-card {
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  line-height: 1.8;
+  transition: .6s;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@include respond(tablet) {
+
+  .home__hero {
+    height: 70vh;
+  }
+
+  .home__stats-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@include respond(mobile) {
+
+  .home__hero {
+    height: 60vh;
+  }
+
+  .home__overlay {
+    display: none;
+  }
+
+  .home__section {
+    padding: 65px 15px;
+  }
+
+}
+
+@include respond(small) {
+
+  .home__hero {
+    height: 50vh;
+  }
+
+}
+/* ===============================
+   HOME HERO SLIDER
+================================ */
+
+.home__hero {
+  height: 95vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slides wrapper */
+
+.home__hero .slides {
+  position: absolute;
+  inset: 0;
+}
+
+/* Each image */
+
+.home__hero .slider-img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+
+  animation: homeSlideShow 15s infinite ease-in-out;
+}
+
+/* Delay timing */
+
+.home__hero .slider-img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.home__hero .slider-img:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.home__hero .slider-img:nth-child(3) {
+  animation-delay: 10s;
+}
+
+/* Overlay */
+
+.home__overlay {
+  position: relative;
+  z-index: 5;
+
+  height: 100%;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.35)
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+/* Animation */
+
+@keyframes homeSlideShow {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

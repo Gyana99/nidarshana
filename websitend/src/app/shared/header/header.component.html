@@ -1,0 +1,64 @@
+<header>
+  <div class='container'>
+    <div class='mobile_menu'>
+      <nav>
+        <ul>
+          <li class='visited'>
+            <a routerLink='/'>Home </a>
+          </li>
+          <li>
+            <a routerLink='/about-us'>About us</a>
+          </li>
+          <li>
+            <a routerLink='/services'>Services</a>
+          </li>
+          <li>
+            <a routerLink='/projects'>Projects</a>
+          <!-- </li>
+          <li>
+            <a routerLink='/career'>Career</a>
+          </li> -->
+          <li>
+            <a routerLink='/contact-us'>Contact us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class='logo'>
+      <a routerLink="/">
+        <img class="img" src="../../../assets/img/logo.png" alt="">
+      </a>
+
+    </div>
+    <nav class='head_nav'>
+      <ul>
+        <li routerLinkActive="visited" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink='/'>Home</a>
+        </li>
+        <li routerLinkActive="visited">
+          <a routerLink='/about-us'>About us</a>
+        </li>
+        <li routerLinkActive="visited">
+          <a routerLink='/services'>Services</a>
+        </li>
+        <li routerLinkActive="visited">
+          <a routerLink='/projects'>Projects</a>
+        </li>
+        <!-- <li routerLinkActive="visited">
+          <a routerLink='/career'>Career</a>
+        </li> -->
+        <li routerLinkActive="visited">
+          <a routerLink='/contact-us'>Contact us</a>
+        </li>
+      </ul>
+    </nav>
+    <div class='mobile_nav'>
+      <button class='burger' title='Open and close menu'>
+        <span class='mobile_nav__label'>Open and close menu</span>
+        <div class='top stripe'></div>
+        <div class='middle stripe'></div>
+        <div class='bottom stripe'></div>
+      </button>
+    </div>
+  </div>
+</header>
