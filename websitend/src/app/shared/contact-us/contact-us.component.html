@@ -1,0 +1,95 @@
+<section class="home__section home__contact">
+  <div class="home__container">
+    <form [formGroup]="contactForm" (ngSubmit)="submit()" class="contact-form">
+      <h3>Send Message</h3>
+
+      <input type="text" formControlName="full_name" placeholder="Full Name" />
+
+      <div
+        *ngIf="
+          contactForm.get('full_name')?.touched &&
+          contactForm.get('full_name')?.hasError('required')
+        "
+        class="text-danger small"
+      >
+        Full Name is required
+      </div>
+
+      <input
+        type="tel"
+        formControlName="mobile_no"
+        placeholder="Mobile Number"
+        maxlength="10"
+        (keypress)="numbersOnly($event)"
+      />
+
+      <div
+        *ngIf="
+          contactForm.get('mobile_no')?.touched &&
+          contactForm.get('mobile_no')?.hasError('required')
+        "
+        class="text-danger small"
+      >
+        Mobile Number is required
+      </div>
+
+      <div
+        *ngIf="
+          contactForm.get('mobile_no')?.touched &&
+          contactForm.get('mobile_no')?.hasError('pattern')
+        "
+        class="text-danger small"
+      >
+        Enter a valid 10-digit mobile number
+      </div>
+
+      <input type="email" formControlName="email" placeholder="Email Address" />
+
+      <div
+        *ngIf="
+          contactForm.get('email')?.touched &&
+          contactForm.get('email')?.hasError('required')
+        "
+        class="text-danger small"
+      >
+        Email is required
+      </div>
+
+      <div
+        *ngIf="
+          contactForm.get('email')?.touched &&
+          contactForm.get('email')?.hasError('email')
+        "
+        class="text-danger small"
+      >
+        Enter a valid email address
+      </div>
+
+      <textarea
+        rows="5"
+        formControlName="message"
+        placeholder="Your Message"
+      ></textarea>
+      <div class="d-flex justify-content-between align-items-center mt-1">
+        <div
+          *ngIf="
+            contactForm.get('message')?.touched &&
+            contactForm.get('message')?.hasError('required')
+          "
+          class="text-danger small"
+        >
+          Message is required
+        </div>
+
+        <div class="small text-muted ms-auto">
+          {{ 500 - (contactForm.get("message")?.value?.length || 0) }}
+          characters remaining
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="contactForm.invalid || isSubmitting">
+        {{ isSubmitting ? "Sending..." : "Send Message →" }}
+      </button>
+    </form>
+  </div>
+</section>

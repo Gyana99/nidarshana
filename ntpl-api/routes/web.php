@@ -1,5 +1,6 @@
 <?php
 
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -13,6 +14,23 @@
 |
 */
 
+
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->get('/logs', 'LogController@index');
+
+
+
+
+
+
+
+
+
+
+$router->group(['middleware' => 'decrypt'], function () use ($router) {
+    $router->post('/contact-us', 'ContactUsController@submit');
 });

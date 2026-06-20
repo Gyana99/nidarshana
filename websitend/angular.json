@@ -30,7 +30,7 @@
               },
               "src/assets"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css","src/styles.scss"],
             "scripts": ["node_modules/jquery/dist/jquery.min.js"]
           },
           "configurations": {
@@ -107,7 +107,7 @@
               },
               "src/assets"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css","src/styles.scss"],
             "scripts": ["node_modules/jquery/dist/jquery.min.js"]
           }
         },
@@ -117,5 +117,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9ad0bef6-064f-417c-a7c9-a54dbbed2cab"
   }
 }
